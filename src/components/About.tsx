@@ -6,7 +6,7 @@ const About = () => {
       <Container sx={{ maxWidth: { xs: '600px', md: '1200px' } }}>
         <Grid container minHeight={'calc(100vh - 160px)'}>
           <Grid item xs={0} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
-            <img src='/public/avatar.jpg' alt='Picture of me' height={'100%'} style={{ objectFit: 'cover' }} />
+            <img src='/avatar.jpg' alt='Picture of me' height={'100%'} style={{ objectFit: 'cover' }} />
           </Grid>
           <Grid item xs={12} md={6} sx={{ paddingY: 6, paddingLeft: { md: 6 } }}>
             <Box pb={2}>
@@ -94,7 +94,7 @@ const About = () => {
               variant='contained'
               style={{ backgroundColor: 'var(--primary-color)', color: 'var(--white-color)' }}
               sx={{ height: '3rem', borderRadius: '50px', marginTop: '1rem' }}
-              href='/public/SE172299_LÊ ĐỖ ĐỨC ANH.pdf'
+              href='/cv.pdf'
             >
               Download CV
             </Button>
