@@ -3,14 +3,11 @@ import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import Menu from '@mui/material/Menu'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
-import MenuItem from '@mui/material/MenuItem'
-import VideoStableRoundedIcon from '@mui/icons-material/VideoStableRounded'
 import { Link } from 'react-router-dom'
-import { /*Avatar, Tooltip,*/ IconButton } from '@mui/material'
+import { Collapse, IconButton, List, ListItemButton } from '@mui/material'
 // import { Brightness4, Brightness7, Login } from '@mui/icons-material'
 
 const pages = ['Home', 'About', 'Resume', 'Projects', 'Contact']
@@ -57,20 +54,12 @@ const ResponsiveAppBar = () => {
   //   }
   // }
   // const [activeLink, setActiveLink] = useActiveLink('/home') // Use the custom hook
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null)
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget)
-  }
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null)
-  }
 
   const [isOverlay, setIsOverlay] = React.useState(false)
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const offset = 100 // Adjust this value to set the offset when the overlay should trigger
+      const offset = 250 // Adjust this value to set the offset when the overlay should trigger
       const shouldOverlay = window.scrollY > offset
       setIsOverlay(shouldOverlay)
     }
@@ -99,20 +88,43 @@ const ResponsiveAppBar = () => {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [user])
 
-  // const handleClick = (page: string) => {
-  //   typeof setActiveLink === 'function' && setActiveLink(`/${page.toLocaleLowerCase()}`)
-  //   window.scrollTo(0, 0)
-  // }
+  const [activeComponent, setActiveComponent] = React.useState('Home')
+
+  const handleClick = (page: string) => {
+    setActiveComponent(page)
+    if (page === 'Home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else if (page === 'About') {
+      window.scrollTo({ top: window.innerHeight - 80, behavior: 'smooth' })
+    }
+    setOpenMenu(false)
+  }
+
+  const [openMenu, setOpenMenu] = React.useState(false)
+
+  const handleMenuClick = () => {
+    setOpenMenu(!openMenu)
+    // clearTimeout(collapseTimeoutRef.current)
+  }
+  const collapseTimeoutRef = React.useRef<number | undefined>()
+
+  React.useEffect(() => {
+    if (openMenu) {
+      collapseTimeoutRef.current = window.setTimeout(() => setOpenMenu(false), 5 * 1000)
+    }
+
+    return () => {
+      clearTimeout(collapseTimeoutRef.current)
+    }
+  }, [openMenu])
 
   return (
     <AppBar
       position={'fixed'}
       sx={{
-        backgroundColor: isOverlay ? 'var(--white-color)' : 'transparent',
+        backgroundColor: isOverlay ? 'var(--white-color)' : { xs: 'var(--black-color)', md: 'transparent' },
         boxShadow: isOverlay ? '0 0 10px rgba(0, 0, 0, 0.3)' : 'none',
-        color: 'black',
-        height: '80px',
-        transform: isOverlay ? 'translateY(0)' : '-100%',
+        color: isOverlay ? 'var(--black-color)' : { xs: 'var(--white-color)', md: 'var(--black-color)' },
         transition: 'all 0.3s ease'
       }}
     >
@@ -131,7 +143,6 @@ const ResponsiveAppBar = () => {
               variant='h5'
               noWrap
               sx={{
-                fontFamily: 'monospace',
                 fontWeight: 'bold',
                 color: 'inherit',
                 textDecoration: 'none'
@@ -140,62 +151,49 @@ const ResponsiveAppBar = () => {
               Ddwcsanh
             </Typography>
           </Box>
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <Box
+            sx={{
+              display: { xs: 'flex', md: 'none' },
+              fontSize: '2rem',
+              maxWidth: 'fit-content'
+            }}
+            component={Link}
+            to={'/'}
+          >
+            <Typography
+              variant='h5'
+              noWrap
+              sx={{
+                display: { xs: 'flex', md: 'none' },
+                fontWeight: 700,
+                color: 'inherit',
+                textDecoration: 'none'
+              }}
+            >
+              Ddwcsanh
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: 'flex', md: 'none' },
+              justifyContent: 'end',
+              alignItems: 'center',
+              minHeight: '80px'
+            }}
+          >
             <IconButton
               size='large'
               aria-label='account of current user'
               aria-controls='menu-appbar'
               aria-haspopup='true'
-              onClick={handleOpenNavMenu}
+              onClick={handleMenuClick}
               color='inherit'
+              style={{ height: '100%' }}
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id='menu-appbar'
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left'
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' }
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  style={{
-                    padding: '0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}
-                >
-                  <Typography
-                    component={Link}
-                    fontWeight={'bold'}
-                    to={page === 'Home' ? '/' : `/${page.toLocaleLowerCase()}`}
-                    // onClick={() => handleClick(page)}
-                    style={{
-                      // color: activeLink === `/${page.toLocaleLowerCase()}` ? theme.redPrimary : 'black',
-                      textDecoration: 'none',
-                      padding: '0.5rem 1.5rem'
-                    }}
-                  >
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
-              {/* {user && (
+            {/* {user && (
                 <MenuItem
                   key='Film Management'
                   onClick={handleCloseNavMenu}
@@ -221,44 +219,14 @@ const ResponsiveAppBar = () => {
                   </Typography>
                 </MenuItem>
               )} */}
-            </Menu>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: 'flex', md: 'none' },
-              justifyContent: 'center',
-              alignItems: 'center',
-              fontSize: '2rem',
-              mr: { md: '1rem', lg: '5rem' },
-              flexGrow: 0.8
-            }}
-            component={Link}
-            to={'/'}
-          >
-            <VideoStableRoundedIcon sx={{ mr: 2, fontSize: '2rem' }} />
-            <Typography
-              variant='h5'
-              noWrap
-              sx={{
-                mr: 0,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                color: 'inherit',
-                textDecoration: 'none'
-              }}
-            >
-              FILMS
-            </Typography>
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }} height={'80px'} padding={'0 auto'} marginLeft={'auto'}>
             {pages.map((page) => (
               <Button
                 key={page}
-                // onClick={() => handleClick(page)}
+                onClick={() => handleClick(page)}
                 sx={{
-                  color: 'white',
+                  color: page === activeComponent ? 'var(--primary-color)' : 'var(--black-color)',
                   display: 'flex',
                   borderRadius: 0,
                   boxShadow: 'none',
@@ -266,17 +234,27 @@ const ResponsiveAppBar = () => {
                   height: '100%',
                   textTransform: 'none',
                   fontSize: 'inherit',
-                  fontWeight: 'inherit',
-                  '&:hover': {
-                    textDecoration: 'underline',
-                    textUnderlinePosition: 'under'
-                  }
+                  fontWeight: 'inherit'
+                  // transition: 'text-decoration 1.6s ease',
+                  // '&:hover::before': {
+                  //   width: '60%'
+                  // },
+                  // '&:focus::before': {
+                  //   width: '60%'
+                  // },
+                  // '&::before': {
+                  //   content: "''",
+                  //   position: 'absolute',
+                  //   bottom: '20px',
+                  //   width: page === activeComponent ? '60%' : '0',
+                  //   height: '2px',
+                  //   backgroundColor: 'var(--primary-color)',
+                  //   transition: 'width 0.3s ease',
+                  //   transformOrigin: 'center'
+                  // }
                 }}
-                // variant={activeLink === `/${page.toLocaleLowerCase()}` ? 'contained' : 'text'}
-                component={Link}
-                to={page === 'Home' ? '/' : `/${page.toLocaleLowerCase()}`}
               >
-                {page}
+                <span className={`MuiTouchRipple-root ${page === activeComponent ? 'active' : ''}`}>{page}</span>
               </Button>
             ))}
             {/* {user && (
@@ -389,6 +367,28 @@ const ResponsiveAppBar = () => {
           </Box>
         </Toolbar>
       </Container>
+      <Collapse in={openMenu} timeout='auto' unmountOnExit>
+        <List component='div' disablePadding>
+          {pages.map((page) => (
+            <ListItemButton
+              key={page}
+              onClick={() => handleClick(page)}
+              sx={{
+                color:
+                  page === activeComponent
+                    ? 'var(--primary-color)'
+                    : !isOverlay
+                    ? 'var(--white-color)'
+                    : 'var(--black-color)',
+                paddingX: '50px',
+                height: '50px'
+              }}
+            >
+              <span className={`MuiTouchRipple-root ${page === activeComponent ? 'active' : ''}`}>{page}</span>
+            </ListItemButton>
+          ))}
+        </List>
+      </Collapse>
     </AppBar>
   )
 }

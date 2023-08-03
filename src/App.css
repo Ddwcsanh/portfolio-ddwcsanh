@@ -68,17 +68,6 @@ a:visited {
   font-weight: 100;
 }
 
-/* index.css */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-
 @keyframes wheel-up-down {
   0% {
     transform: translate(10px, 10px);
@@ -86,5 +75,30 @@ a:visited {
   }
   100% {
     transform: translate(35px, 35px);
+  }
+}
+
+.MuiTouchRipple-root {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 5px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #3e64ff;
+    transition:
+      width 0.3s ease,
+      left 0.3s ease;
+    transform: translateX(-50%);
+  }
+  &:hover::before,
+  &.active::before {
+    width: 100%;
+    left: 50%;
   }
 }

@@ -2,10 +2,18 @@ import { Box, Container, Typography } from '@mui/material'
 import Typewriter from 'typewriter-effect'
 import SouthEastIcon from '@mui/icons-material/SouthEast'
 import { Fade } from 'react-awesome-reveal'
+import styled from 'styled-components'
+
+const Break = styled.span`
+  display: inline;
+  @media (max-width: 600px) {
+    display: block;
+  }
+`
 
 const Home = () => {
   return (
-    <section>
+    <section style={{ scrollMarginBlockStart: '0' }}>
       <Box
         height={'100vh'}
         width={'50%'}
@@ -31,8 +39,10 @@ const Home = () => {
               >
                 Hello, I am
               </Typography>
-              <Typography variant='h2' fontWeight={800} lineHeight={1.5} mb={'0.5rem'}>
-                Le Do Duc Anh
+              <Typography variant='h2' fontWeight={800} lineHeight={1.5} mb={'0.5rem'} sx={{ wordBreak: 'break-word' }}>
+                <Box display={'flex'} flexWrap={'wrap'} justifyContent={'center'}>
+                  <Break>Le Do&nbsp;</Break> <Break>Duc Anh</Break>
+                </Box>
               </Typography>
               <Box display={'flex'}>
                 <Typography variant='h4' fontWeight={800}>
@@ -42,7 +52,7 @@ const Home = () => {
                   component={Typewriter}
                   options={{
                     delay: 150,
-                    strings: ['Developer.', 'Designer.'],
+                    strings: ['Developer.', 'Designer.', 'Dreamer.', 'Fighter.'],
                     autoStart: true,
                     loop: true
                   }}
@@ -52,11 +62,11 @@ const Home = () => {
           </Fade>
         </Box>
       </Container>
-      <Box position={'absolute'} bottom={'150px'} width={'100%'} display={'flex'} justifyContent={'center'}>
+      <Box position={'absolute'} bottom={'10vh'} width={'100%'} display={'flex'} justifyContent={'center'}>
         <Box
           height={'70px'}
           width={'70px'}
-          onClick={() => console.log('click')}
+          onClick={() => scrollTo({ top: window.innerHeight - 80, behavior: 'smooth' })}
           sx={{
             cursor: 'pointer',
             backgroundImage: 'linear-gradient(45deg, var(--white-color) 50%, #edf0ff 50%)',
