@@ -96,6 +96,8 @@ const ResponsiveAppBar = () => {
       window.scrollTo({ top: 0, behavior: 'smooth' })
     } else if (page === 'About') {
       window.scrollTo({ top: window.innerHeight - 80, behavior: 'smooth' })
+    } else if (page === 'Resume') {
+      window.scrollTo({ top: window.innerHeight * 2 - 200, behavior: 'smooth' })
     }
     setOpenMenu(false)
   }
@@ -235,23 +237,6 @@ const ResponsiveAppBar = () => {
                   textTransform: 'none',
                   fontSize: 'inherit',
                   fontWeight: 'inherit'
-                  // transition: 'text-decoration 1.6s ease',
-                  // '&:hover::before': {
-                  //   width: '60%'
-                  // },
-                  // '&:focus::before': {
-                  //   width: '60%'
-                  // },
-                  // '&::before': {
-                  //   content: "''",
-                  //   position: 'absolute',
-                  //   bottom: '20px',
-                  //   width: page === activeComponent ? '60%' : '0',
-                  //   height: '2px',
-                  //   backgroundColor: 'var(--primary-color)',
-                  //   transition: 'width 0.3s ease',
-                  //   transformOrigin: 'center'
-                  // }
                 }}
               >
                 <span className={`MuiTouchRipple-root ${page === activeComponent ? 'active' : ''}`}>{page}</span>

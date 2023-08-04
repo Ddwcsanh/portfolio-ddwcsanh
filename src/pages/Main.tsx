@@ -1,7 +1,8 @@
-import Navigation from '~/components/Navigation'
-import Footer from '~/components/Footer'
-import Home from '~/components/Home'
-import About from '~/components/About'
+import Navigation from './Navigation'
+import About from './About'
+import Footer from './Footer'
+import Home from './Home'
+import Resume from './Resume'
 
 const Main = () => {
   return (
@@ -9,6 +10,7 @@ const Main = () => {
       <Navigation />
       <Home />
       <About />
+      <Resume />
       <Footer />
     </>
   )
