@@ -98,6 +98,8 @@ const ResponsiveAppBar = () => {
       window.scrollTo({ top: window.innerHeight - 80, behavior: 'smooth' })
     } else if (page === 'Resume') {
       window.scrollTo({ top: window.innerHeight * 2 - 200, behavior: 'smooth' })
+    } else if (page === 'Projects') {
+      window.scrollTo({ top: window.innerHeight * 4.5 - 66, behavior: 'smooth' })
     }
     setOpenMenu(false)
   }
@@ -106,7 +108,7 @@ const ResponsiveAppBar = () => {
 
   const handleMenuClick = () => {
     setOpenMenu(!openMenu)
-    // clearTimeout(collapseTimeoutRef.current)
+    clearTimeout(collapseTimeoutRef.current)
   }
   const collapseTimeoutRef = React.useRef<number | undefined>()
 

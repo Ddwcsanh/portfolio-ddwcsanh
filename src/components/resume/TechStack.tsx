@@ -72,7 +72,7 @@ const myTechStack = [
     title: 'Back-end',
     items: [
       {
-        name: 'Mycrosoft SQL Server',
+        name: 'Microsoft SQL Server',
         icon: SiMicrosoftsqlserver,
         color: '#CC2927'
       },

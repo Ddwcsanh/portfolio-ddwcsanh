@@ -1,5 +1,6 @@
 import { Box, Typography, Fab, Divider } from '@mui/material'
 import SchoolIcon from '@mui/icons-material/School'
+import React from 'react'
 
 const educationData = [
   {
@@ -25,8 +26,8 @@ const Education = () => {
       </Typography>
       <Box>
         {educationData.map((education, index) => (
-          <>
-            <Box key={index} sx={{ display: 'flex' }}>
+          <React.Fragment key={index}>
+            <Box sx={{ display: 'flex' }}>
               <Fab
                 size={'small'}
                 style={{
@@ -57,7 +58,7 @@ const Education = () => {
               </Box>
             </Box>
             <Divider sx={{ marginBottom: '30px' }} />
-          </>
+          </React.Fragment>
         ))}
       </Box>
     </Box>

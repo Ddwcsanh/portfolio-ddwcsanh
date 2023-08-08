@@ -1,5 +1,6 @@
 import { Container, Grid, List, ListItem, ListItemText } from '@mui/material'
 import { Fade } from 'react-awesome-reveal'
+import Awards from '~/components/resume/Awards'
 import Education from '~/components/resume/Education'
 import TechStack from '~/components/resume/TechStack'
 
@@ -41,6 +42,7 @@ const Resume = () => {
             <Grid item xs={12} md={9}>
               <Education />
               <TechStack />
+              <Awards />
             </Grid>
           </Grid>
         </Container>

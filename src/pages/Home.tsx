@@ -13,7 +13,7 @@ const Break = styled.span`
 
 const Home = () => {
   return (
-    <section style={{ scrollMarginBlockStart: '0' }}>
+    <section>
       <Box
         height={'100vh'}
         width={'50%'}
