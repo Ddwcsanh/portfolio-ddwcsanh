@@ -13,7 +13,7 @@ const Break = styled.span`
 
 const Home = () => {
   return (
-    <section>
+    <section id='Home'>
       <Box
         height={'100vh'}
         width={'50%'}

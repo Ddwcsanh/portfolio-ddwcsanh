@@ -8,33 +8,8 @@ import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
 import { Collapse, IconButton, List, ListItemButton } from '@mui/material'
-// import { Brightness4, Brightness7, Login } from '@mui/icons-material'
 
 const pages = ['Home', 'About', 'Resume', 'Projects', 'Contact']
-
-// function useActiveLink(initialLink: string) {
-//   const [activeLink, setActiveLink] = React.useState(initialLink)
-
-//   const location = useLocation()
-
-//   React.useEffect(() => {
-//     const page = pages.find((page) => {
-//       if (page === 'Home') return location.pathname === '/'
-//       else return `/${page.toLocaleLowerCase()}` === location.pathname
-//     })
-//     if (page) {
-//       setActiveLink(`/${page.toLocaleLowerCase()}`)
-//     } else if (location.pathname.includes('/detail')) {
-//       setActiveLink('/home')
-//     } else if (location.pathname.includes('/film-mng')) {
-//       setActiveLink('/film-mng')
-//     } else {
-//       setActiveLink('')
-//     }
-//   }, [location])
-
-//   return [activeLink, setActiveLink] // Return the state and setter function
-// }
 
 const ResponsiveAppBar = () => {
   // const { user, logout } = useAuth()
@@ -55,6 +30,7 @@ const ResponsiveAppBar = () => {
   // }
   // const [activeLink, setActiveLink] = useActiveLink('/home') // Use the custom hook
 
+  //check if navbar is overlay, if true, change color to white
   const [isOverlay, setIsOverlay] = React.useState(false)
 
   React.useEffect(() => {
@@ -70,6 +46,7 @@ const ResponsiveAppBar = () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
+  //===============================================================
 
   // const { login } = UserAuth()
   // const navigate = useNavigate()
@@ -88,22 +65,106 @@ const ResponsiveAppBar = () => {
   //   // eslint-disable-next-line react-hooks/exhaustive-deps
   // }, [user])
 
+  //check navbar scroll to the id of the component
   const [activeComponent, setActiveComponent] = React.useState('Home')
 
-  const handleClick = (page: string) => {
-    setActiveComponent(page)
-    if (page === 'Home') {
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    } else if (page === 'About') {
-      window.scrollTo({ top: window.innerHeight - 80, behavior: 'smooth' })
-    } else if (page === 'Resume') {
-      window.scrollTo({ top: window.innerHeight * 2 - 200, behavior: 'smooth' })
-    } else if (page === 'Projects') {
-      window.scrollTo({ top: window.innerHeight * 4.5 - 66, behavior: 'smooth' })
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    const target = event.currentTarget.getAttribute('href')
+    if (target) {
+      const element = document.querySelector(target)
+      if (element) {
+        const offset = element.getBoundingClientRect().top + window.scrollY - 80
+
+        window.scrollTo({ top: offset, behavior: 'smooth' })
+      }
     }
     setOpenMenu(false)
   }
+  //===============================================================
 
+  //navbar auto set active component when scroll to that component
+  const handleScrollDown = () => {
+    const scrollPositions = pages.map((page) => {
+      const element = document.querySelector(`#${page}`)
+      if (element) {
+        return {
+          name: page,
+          top: element.getBoundingClientRect().top,
+          bottom: element.getBoundingClientRect().bottom
+        }
+      }
+      return null
+    })
+
+    const viewportHeight = window.innerHeight
+
+    let closestElement = null
+    let closestDistance = Infinity
+
+    scrollPositions.forEach((position) => {
+      if (position && Math.abs(position.top) < 400) {
+        closestDistance = Math.min(Math.abs(position.top), closestDistance)
+        closestElement = position.name
+      } else if (position && Math.abs(position.bottom - viewportHeight) < 400) {
+        closestDistance = Math.min(Math.abs(position.bottom - viewportHeight), closestDistance)
+        closestElement = position.name
+      }
+    })
+
+    if (closestElement) {
+      setActiveComponent(closestElement)
+    }
+  }
+
+  const handleScrollUp = () => {
+    const scrollPositions = pages.map((page) => {
+      const element = document.querySelector(`#${page}`)
+      if (element) {
+        return {
+          name: page,
+          top: element.getBoundingClientRect().top
+        }
+      }
+      return null
+    })
+
+    let closestElement = null
+    let closestDistance = Infinity
+
+    scrollPositions.forEach((position) => {
+      if (position && position.top < 400) {
+        closestDistance = Math.min(Math.abs(position.top), closestDistance)
+        closestElement = position.name
+      }
+    })
+
+    if (closestElement) {
+      setActiveComponent(closestElement)
+    }
+  }
+  const scrollYRef = React.useRef<number>(0)
+
+  React.useEffect(() => {
+    const handleScrollEvent = () => {
+      if (window.scrollY > scrollYRef.current) {
+        handleScrollDown()
+      } else {
+        handleScrollUp()
+      }
+      scrollYRef.current = window.scrollY
+    }
+    scrollYRef.current = window.scrollY
+
+    window.addEventListener('scroll', handleScrollEvent)
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollEvent)
+    }
+  }, [])
+  //===============================================================
+
+  //navbar collapse and open
   const [openMenu, setOpenMenu] = React.useState(false)
 
   const handleMenuClick = () => {
@@ -121,6 +182,7 @@ const ResponsiveAppBar = () => {
       clearTimeout(collapseTimeoutRef.current)
     }
   }, [openMenu])
+  //===============================================================
 
   return (
     <AppBar
@@ -228,9 +290,10 @@ const ResponsiveAppBar = () => {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={() => handleClick(page)}
+                onClick={handleClick}
+                href={`#${page}`}
+                style={{ color: page === activeComponent ? 'var(--primary-color)' : 'var(--black-color)' }}
                 sx={{
-                  color: page === activeComponent ? 'var(--primary-color)' : 'var(--black-color)',
                   display: 'flex',
                   borderRadius: 0,
                   boxShadow: 'none',
@@ -355,18 +418,21 @@ const ResponsiveAppBar = () => {
         </Toolbar>
       </Container>
       <Collapse in={openMenu} timeout='auto' unmountOnExit>
-        <List component='div' disablePadding>
+        <List component='div' disablePadding sx={{ pb: 1 }}>
           {pages.map((page) => (
             <ListItemButton
               key={page}
-              onClick={() => handleClick(page)}
-              sx={{
+              onClick={handleClick}
+              href={`#${page}`}
+              style={{
                 color:
                   page === activeComponent
                     ? 'var(--primary-color)'
                     : !isOverlay
                     ? 'var(--white-color)'
-                    : 'var(--black-color)',
+                    : 'var(--black-color)'
+              }}
+              sx={{
                 paddingX: '50px',
                 height: '50px'
               }}

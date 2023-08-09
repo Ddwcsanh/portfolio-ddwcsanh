@@ -3,14 +3,14 @@ import { Fade } from 'react-awesome-reveal'
 
 const About = () => {
   return (
-    <section>
+    <section style={{ paddingBottom: '5rem' }} id='About'>
       <Fade direction='up' triggerOnce duration={1200}>
         <Container sx={{ maxWidth: { xs: '600px', md: '1200px' } }}>
           <Grid container minHeight={'calc(100vh - 160px)'}>
             <Grid item xs={0} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
               <img src='/avatar.jpg' alt='Picture of me' height={'100%'} style={{ objectFit: 'cover' }} />
             </Grid>
-            <Grid item xs={12} md={6} sx={{ paddingY: 6, paddingLeft: { md: 6 } }}>
+            <Grid item xs={12} md={6} sx={{ paddingTop: 6, paddingLeft: { md: 6 } }}>
               <Box pb={2}>
                 <Typography variant='h3' fontWeight={700} mb={3}>
                   About me

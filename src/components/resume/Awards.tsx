@@ -17,7 +17,7 @@ const awardsData = [
 
 const Awards = () => {
   return (
-    <Box>
+    <Box id='awards'>
       <Typography variant='h4' fontWeight={700} mb={4} style={{ color: 'var(--primary-color)' }}>
         Awards
       </Typography>

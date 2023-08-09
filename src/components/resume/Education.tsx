@@ -20,7 +20,7 @@ const educationData = [
 
 const Education = () => {
   return (
-    <Box marginBottom={'112px'}>
+    <Box margin={'2rem 0 112px'} id='education'>
       <Typography variant='h4' fontWeight={700} mb={4} style={{ color: 'var(--primary-color)' }}>
         Education
       </Typography>

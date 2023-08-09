@@ -122,7 +122,7 @@ const myTechStack = [
 
 const TechStack = () => {
   return (
-    <Box marginBottom={'112px'}>
+    <Box marginBottom={'112px'} id='tech-stack'>
       <Typography variant='h4' fontWeight={700} mb={4} style={{ color: 'var(--primary-color)' }}>
         Tech Stack
       </Typography>

@@ -25,7 +25,7 @@ const Projects = () => {
   const theme = useTheme()
   const md = useMediaQuery(theme.breakpoints.down('md'))
   return (
-    <section style={{ paddingTop: '5rem' }}>
+    <section style={{ paddingBottom: '5rem' }} id='Projects'>
       <Fade direction='up' triggerOnce duration={1200}>
         <Container disableGutters maxWidth={false}>
           <Box pb={2} display={'flex'} flexDirection={'column'} alignItems={'center'}>
@@ -37,46 +37,6 @@ const Projects = () => {
             </Typography>
           </Box>
           {md ? <ProjectList images={images} /> : <Slide images={images} />}
-
-          {/* <Grid container>
-          <Grid item xs={12} md={6} height={'700px'} sx={{ position: 'relative' }}>
-            <Box
-              height={'100%'}
-              width={'100%'}
-              sx={{
-                position: 'absolute',
-                backgroundImage: 'url(/DMS_project.png)',
-                backgroundSize: 'contain',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                top: 0
-              }}
-            >
-              <Box
-                height={'100%'}
-                width={'100%'}
-                sx={{
-                  position: 'absolute',
-                  backgroundColor: 'var(--primary-color)',
-                  opacity: 0,
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                  '&:hover': {
-                    opacity: 1
-                  }
-                }}
-              />
-            </Box>
-          </Grid>
-          <Grid item xs={12} md={6} height={{ sm: 'calc(100vh - 264.02px)' }}>
-            <img
-              src='/My Favourite Films_project.png'
-              alt='Picture of me'
-              width={'100%'}
-              style={{ objectFit: 'cover' }}
-            />
-          </Grid>
-        </Grid> */}
         </Container>
       </Fade>
     </section>
