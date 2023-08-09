@@ -27,7 +27,6 @@ const Resume = () => {
     event.preventDefault()
     const target = event.currentTarget.getAttribute('href')
     if (target) {
-      setActive(target)
       const element = document.querySelector(target)
       if (element) {
         const offset = element.getBoundingClientRect().top + window.scrollY - 112
