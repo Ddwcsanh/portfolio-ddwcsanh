@@ -48,7 +48,7 @@ const About = () => {
                       Nick name:
                     </ListItemText>
                     <ListItemText sx={{ textAlign: 'left', minWidth: '230px', whiteSpace: 'nowrap' }}>
-                      Alexavier (Ddwcsanh)
+                      Alexavier
                     </ListItemText>
                   </ListItem>
                   <ListItem sx={{ px: 0, display: 'flex', flexWrap: 'wrap' }}>
@@ -105,7 +105,7 @@ const About = () => {
                 variant='contained'
                 style={{ backgroundColor: 'var(--primary-color)', color: 'var(--white-color)' }}
                 sx={{ height: '3rem', borderRadius: '50px', marginTop: '1rem' }}
-                href='/cv.pdf'
+                href='/CV - Le Do Duc Anh.pdf'
                 download={'CV - Le Do Duc Anh'}
                 rel='noreferrer'
               >
