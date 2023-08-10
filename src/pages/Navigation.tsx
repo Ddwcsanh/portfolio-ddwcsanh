@@ -6,8 +6,7 @@ import Typography from '@mui/material/Typography'
 import MenuIcon from '@mui/icons-material/Menu'
 import Container from '@mui/material/Container'
 import Button from '@mui/material/Button'
-import { Link } from 'react-router-dom'
-import { Collapse, IconButton, List, ListItemButton } from '@mui/material'
+import { Collapse, IconButton, Link, List, ListItemButton } from '@mui/material'
 
 const pages = ['Home', 'About', 'Resume', 'Projects', 'Contact']
 
@@ -168,7 +167,8 @@ const ResponsiveAppBar = () => {
               alignItems: 'center'
             }}
             component={Link}
-            to={'/'}
+            href='#Home'
+            onClick={handleClick}
           >
             <Typography
               variant='h5'
@@ -189,7 +189,8 @@ const ResponsiveAppBar = () => {
               maxWidth: 'fit-content'
             }}
             component={Link}
-            to={'/'}
+            href='#Home'
+            onClick={handleClick}
           >
             <Typography
               variant='h5'

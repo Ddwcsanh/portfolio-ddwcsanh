@@ -149,7 +149,7 @@ const Footer = () => {
             Copyright © {new Date().getFullYear()} Le Do Duc Anh ❤️ ND | All rights reserved
           </Typography>
           <Typography variant='body1' color={'var(--gray-color)'} textAlign={'center'}>
-            Template by
+            Template by&nbsp;
             <Link href={'https://colorlib.com/wp/template/ronaldo/'} target='_blank' rel='noreferrer' underline='hover'>
               Ronaldo
             </Link>

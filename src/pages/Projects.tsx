@@ -32,7 +32,7 @@ const Projects = () => {
             <Typography variant='h3' fontWeight={700} my={3}>
               My Projects
             </Typography>
-            <Typography variant='body1' mb={2} style={{ color: 'var(--gray-color)' }}>
+            <Typography variant='body1' mb={2} style={{ color: 'var(--gray-color)' }} textAlign={'center'}>
               Some of my project collaborating with my friends
             </Typography>
           </Box>
