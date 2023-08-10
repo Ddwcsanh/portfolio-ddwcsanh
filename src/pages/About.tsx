@@ -106,6 +106,8 @@ const About = () => {
                 style={{ backgroundColor: 'var(--primary-color)', color: 'var(--white-color)' }}
                 sx={{ height: '3rem', borderRadius: '50px', marginTop: '1rem' }}
                 href='/cv.pdf'
+                download={'CV - Le Do Duc Anh'}
+                rel='noreferrer'
               >
                 Download CV
               </Button>
