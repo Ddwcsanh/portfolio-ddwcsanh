@@ -258,7 +258,9 @@ const Contact = () => {
                     allowFullScreen={true}
                     loading='lazy'
                     referrerPolicy='no-referrer-when-downgrade'
-                    src='https://www.google.com/maps/embed/v1/place?q=FPT+University+HCMC,+Đường+D1,+Long+Thạnh+Mỹ,+Thành+Phố+Thủ+Đức,+Thành+phố+Hồ+Chí+Minh,+Việt+Nam&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8'
+                    src={`https://www.google.com/maps/embed/v1/place?q=FPT+University+HCMC,+Đường+D1,+Long+Thạnh+Mỹ,+Thành+Phố+Thủ+Đức,+Thành+phố+Hồ+Chí+Minh,+Việt+Nam&key=${
+                      import.meta.env.REACT_APP_GOOGLE_MAP_API_KEY as string
+                    }`}
                   ></iframe>
                 </Box>
               </Grid>
