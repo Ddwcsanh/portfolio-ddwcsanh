@@ -119,65 +119,69 @@ const Resume = () => {
 
   return (
     <section style={{ paddingBottom: '5rem' }} id='Resume'>
-      <Fade direction='up' triggerOnce duration={1200}>
-        <Container sx={{ maxWidth: { xs: '600px', md: '1200px' } }}>
-          <Grid container>
-            <Grid item xs={0} md={3}>
-              <Box sx={{ position: 'sticky', top: '80px', padding: { xs: '1rem 0', md: '2rem 0' } }}>
-                {Menu.map((item, index) => (
-                  <React.Fragment key={index}>
-                    <ListItem
+      <Container sx={{ maxWidth: { xs: '600px', md: '1200px' } }}>
+        <Grid container>
+          <Grid item xs={0} md={3}>
+            <Box sx={{ position: 'sticky', top: '80px', padding: { xs: '1rem 0', md: '2rem 0' } }}>
+              {Menu.map((item, index) => (
+                <React.Fragment key={index}>
+                  <ListItem
+                    sx={{
+                      p: 0,
+                      mb: '10px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      position: 'relative'
+                    }}
+                  >
+                    <Box
                       sx={{
-                        p: 0,
-                        mb: '10px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        position: 'relative'
+                        content: '""',
+                        position: 'absolute',
+                        left: active === item.href ? '5px' : '-20px',
+                        top: '50%',
+                        transform: 'translateY(-50%)',
+                        width: active === item.href ? '20px' : '0px',
+                        height: '2px',
+                        backgroundColor: 'var(--primary-color)',
+                        transition: 'left 0.3s ease'
                       }}
+                    />
+                    <Link
+                      href={item.href}
+                      underline='none'
+                      sx={{
+                        display: 'block',
+                        width: '100%',
+                        position: 'relative',
+                        marginLeft: 0, // Space between bullet point and text
+                        cursor: 'pointer',
+                        transform: active === item.href ? 'translateX(30px)' : 'none',
+                        transition: 'transform 0.3s ease'
+                      }}
+                      style={{ color: active === item.href ? 'var(--primary-color)' : 'var(--black-color)' }}
+                      onClick={handleClick}
                     >
-                      <Box
-                        sx={{
-                          content: '""',
-                          position: 'absolute',
-                          left: active === item.href ? '5px' : '-20px',
-                          top: '50%',
-                          transform: 'translateY(-50%)',
-                          width: active === item.href ? '20px' : '0px',
-                          height: '2px',
-                          backgroundColor: 'var(--primary-color)',
-                          transition: 'left 0.3s ease'
-                        }}
-                      />
-                      <Link
-                        href={item.href}
-                        underline='none'
-                        sx={{
-                          display: 'block',
-                          width: '100%',
-                          position: 'relative',
-                          marginLeft: 0, // Space between bullet point and text
-                          cursor: 'pointer',
-                          transform: active === item.href ? 'translateX(30px)' : 'none',
-                          transition: 'transform 0.3s ease'
-                        }}
-                        style={{ color: active === item.href ? 'var(--primary-color)' : 'var(--black-color)' }}
-                        onClick={handleClick}
-                      >
-                        <ListItemText primaryTypographyProps={{ fontWeight: 600 }}>{item.name}</ListItemText>
-                      </Link>
-                    </ListItem>
-                  </React.Fragment>
-                ))}
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={9}>
-              <Education />
-              <TechStack />
-              <Awards />
-            </Grid>
+                      <ListItemText primaryTypographyProps={{ fontWeight: 600 }}>{item.name}</ListItemText>
+                    </Link>
+                  </ListItem>
+                </React.Fragment>
+              ))}
+            </Box>
           </Grid>
-        </Container>
-      </Fade>
+          <Grid item xs={12} md={9}>
+            <Fade direction='up' triggerOnce duration={1200}>
+              <Education />
+            </Fade>
+            <Fade direction='up' triggerOnce duration={1200}>
+              <TechStack />
+            </Fade>
+            <Fade direction='up' triggerOnce duration={1200}>
+              <Awards />
+            </Fade>
+          </Grid>
+        </Grid>
+      </Container>
     </section>
   )
 }

@@ -76,9 +76,9 @@ const Contact = () => {
   }
   return (
     <section id='Contact'>
-      <Fade direction='up' triggerOnce duration={1200}>
-        <Container maxWidth={'lg'}>
-          <Box minHeight={'calc(100vh - 80px)'} maxHeight={'max-content'}>
+      <Container maxWidth={'lg'}>
+        <Box height={'100%'}>
+          <Fade direction='up' triggerOnce duration={1200}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
               <Typography variant='h3' fontWeight={700} mt={3} mb={2}>
                 Contact Me
@@ -89,6 +89,8 @@ const Contact = () => {
                 If you have any questions or want to discuss a project, please do not hesitate to contact me.
               </Typography>
             </Box>
+          </Fade>
+          <Fade direction='up' triggerOnce duration={1200}>
             <Grid container spacing={2} mb={5}>
               {contactInfo.map((item, index) => (
                 <Grid
@@ -159,6 +161,8 @@ const Contact = () => {
                 </Grid>
               ))}
             </Grid>
+          </Fade>
+          <Fade direction='up' triggerOnce duration={1200}>
             <Grid container flexDirection={{ xs: 'column-reverse', md: 'row' }}>
               <Grid item xs={12} md={6} display={'flex'} flexDirection={'column'} alignItems={'center'}>
                 <Box
@@ -259,15 +263,15 @@ const Contact = () => {
                     loading='lazy'
                     referrerPolicy='no-referrer-when-downgrade'
                     src={`https://www.google.com/maps/embed/v1/place?q=FPT+University+HCMC,+Đường+D1,+Long+Thạnh+Mỹ,+Thành+Phố+Thủ+Đức,+Thành+phố+Hồ+Chí+Minh,+Việt+Nam&key=${
-                      import.meta.env.REACT_APP_GOOGLE_MAP_API_KEY as string
+                      import.meta.env.VITE_GOOGLE_API_KEY as string
                     }`}
                   ></iframe>
                 </Box>
               </Grid>
             </Grid>
-          </Box>
-        </Container>
-      </Fade>
+          </Fade>
+        </Box>
+      </Container>
     </section>
   )
 }

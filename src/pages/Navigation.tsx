@@ -12,24 +12,6 @@ import { Collapse, IconButton, List, ListItemButton } from '@mui/material'
 const pages = ['Home', 'About', 'Resume', 'Projects', 'Contact']
 
 const ResponsiveAppBar = () => {
-  // const { user, logout } = useAuth()
-  // const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null)
-  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorElUser(event.currentTarget)
-  // }
-  // const handleCloseUserMenu = () => {
-  //   setAnchorElUser(null)
-  // }
-
-  // const handleSignOut = async () => {
-  //   try {
-  //     await logout()
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  // const [activeLink, setActiveLink] = useActiveLink('/home') // Use the custom hook
-
   //check if navbar is overlay, if true, change color to white
   const [isOverlay, setIsOverlay] = React.useState(false)
 
@@ -47,23 +29,6 @@ const ResponsiveAppBar = () => {
     }
   }, [])
   //===============================================================
-
-  // const { login } = UserAuth()
-  // const navigate = useNavigate()
-  // const handleGoogleSignIn = async () => {
-  //   try {
-  //     await login()
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
-  // React.useEffect(() => {
-  //   if (user != null) {
-  //     navigate('/')
-  //   }
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [user])
 
   //check navbar scroll to the id of the component
   const [activeComponent, setActiveComponent] = React.useState('Home')
@@ -259,32 +224,6 @@ const ResponsiveAppBar = () => {
             >
               <MenuIcon />
             </IconButton>
-            {/* {user && (
-                <MenuItem
-                  key='Film Management'
-                  onClick={handleCloseNavMenu}
-                  style={{
-                    padding: '0',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                  }}
-                >
-                  <Typography
-                    component={Link}
-                    fontWeight={'bold'}
-                    to='/film-mng'
-                    onClick={() => handleClick('Film Management')}
-                    style={{
-                      color: activeLink === '/film-mng' ? theme.redPrimary : 'black',
-                      textDecoration: 'none',
-                      padding: '0.5rem 1.5rem'
-                    }}
-                  >
-                    Films
-                  </Typography>
-                </MenuItem>
-              )} */}
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }} height={'80px'} padding={'0 auto'} marginLeft={'auto'}>
             {pages.map((page) => (
@@ -307,114 +246,8 @@ const ResponsiveAppBar = () => {
                 <span className={`MuiTouchRipple-root ${page === activeComponent ? 'active' : ''}`}>{page}</span>
               </Button>
             ))}
-            {/* {user && (
-              <Button
-                key='Film Management'
-                onClick={() => handleClick('Film Management')}
-                sx={{
-                  color: 'white',
-                  display: 'flex',
-                  borderRadius: 0,
-                  boxShadow: 'none',
-                  padding: 0,
-                  width: '10vw',
-                  height: '100%',
-                  textAlign: 'center',
-                  '&:hover': {
-                    backgroundColor: theme.redDarker
-                  }
-                }}
-                variant={activeLink === '/film-mng' ? 'contained' : 'text'}
-                color={'error'}
-                component={Link}
-                to='/film-mng'
-              >
-                Films
-              </Button>
-            )} */}
           </Box>
-          <Box sx={{ flexGrow: 0 }} display={'flex'}>
-            {/* {user ? (
-              <>
-                <Tooltip title='Open settings'>
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Avatar alt={user?.email || 'User'} src={user?.photoURL || ''} />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id='menu-appbar'
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}
-                >
-                  <MenuItem
-                    onClick={handleCloseUserMenu}
-                    style={{
-                      padding: '0',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center'
-                    }}
-                  >
-                    <Typography
-                      component={Link}
-                      fontWeight={'bold'}
-                      to={'/profile'}
-                      style={{
-                        textDecoration: 'none',
-                        padding: '0.5rem 1.5rem'
-                      }}
-                    >
-                      Profile
-                    </Typography>
-                  </MenuItem>
-                  <MenuItem
-                    onClick={handleCloseUserMenu}
-                    style={{
-                      padding: '0',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center'
-                    }}
-                  >
-                    <Typography
-                      fontWeight={'bold'}
-                      onClick={handleSignOut}
-                      style={{
-                        textDecoration: 'none',
-                        padding: '0.5rem 1.5rem'
-                      }}
-                    >
-                      Logout
-                    </Typography>
-                  </MenuItem>
-                </Menu>
-              </>
-            ) : (
-              <Button
-                sx={{ color: 'white', lineHeight: 0 }}
-                startIcon={<Login />}
-                onClick={() => {
-                  navigate('/login')
-                }}
-              >
-                Sign in
-              </Button>
-            )} */}
-            {/* <IconButton sx={{ ml: 1 }} onClick={toggle} color='inherit' disableFocusRipple disableTouchRipple>
-              {dark ? <Brightness7 /> : <Brightness4 />}
-            </IconButton> */}
-          </Box>
+          <Box sx={{ flexGrow: 0 }} display={'flex'}></Box>
         </Toolbar>
       </Container>
       <Collapse in={openMenu} timeout='auto' unmountOnExit>

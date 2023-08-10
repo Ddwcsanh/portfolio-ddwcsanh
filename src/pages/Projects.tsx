@@ -26,8 +26,8 @@ const Projects = () => {
   const md = useMediaQuery(theme.breakpoints.down('md'))
   return (
     <section style={{ paddingBottom: '5rem' }} id='Projects'>
-      <Fade direction='up' triggerOnce duration={1200}>
-        <Container disableGutters maxWidth={'lg'}>
+      <Container disableGutters maxWidth={'lg'}>
+        <Fade direction='up' triggerOnce duration={1200}>
           <Box pb={2} display={'flex'} flexDirection={'column'} alignItems={'center'}>
             <Typography variant='h3' fontWeight={700} my={3}>
               My Projects
@@ -37,8 +37,8 @@ const Projects = () => {
             </Typography>
           </Box>
           {md ? <ProjectList images={images} /> : <Slide images={images} />}
-        </Container>
-      </Fade>
+        </Fade>
+      </Container>
     </section>
   )
 }

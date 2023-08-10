@@ -4,8 +4,8 @@ import { Fade } from 'react-awesome-reveal'
 const About = () => {
   return (
     <section style={{ paddingBottom: '5rem' }} id='About'>
-      <Fade direction='up' triggerOnce duration={1200}>
-        <Container sx={{ maxWidth: { xs: 'sm', md: 'lg' } }}>
+      <Container sx={{ maxWidth: { xs: 'sm', md: 'lg' } }}>
+        <Fade direction='up' triggerOnce duration={1200}>
           <Grid container height={'100%'}>
             <Grid item xs={0} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
               <img
@@ -113,8 +113,8 @@ const About = () => {
               </Button>
             </Grid>
           </Grid>
-        </Container>
-      </Fade>
+        </Fade>
+      </Container>
     </section>
   )
 }
