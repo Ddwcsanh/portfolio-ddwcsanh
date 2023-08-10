@@ -1,7 +1,9 @@
 import { Email, Facebook, GitHub, Instagram, LinkedIn, Phone } from '@mui/icons-material'
-import { Box, Container, Fab, Grid, Link, Typography } from '@mui/material'
+import { Box, Button, Container, Fab, Grid, Link, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { Fade } from 'react-awesome-reveal'
+import emailjs from '@emailjs/browser'
+import { notifyError, notifySuccess } from '~/global/toastify'
 
 const contactInfo = [
   {
@@ -43,13 +45,42 @@ const contactInfo = [
 ]
 
 const Contact = () => {
+  const form = React.useRef()
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+
+    if (form.current) {
+      emailjs
+        .sendForm(
+          import.meta.env.VITE_YOUR_SERVICE_ID as string,
+          import.meta.env.VITE_YOUR_TEMPLATE_ID as string,
+          form.current,
+          import.meta.env.VITE_YOUR_PUBLIC_KEY as string
+        )
+        .then(
+          (result) => {
+            console.log(result.text)
+            notifySuccess('Message sent successfully!')
+            if (form.current) (form.current as HTMLFormElement).reset()
+          },
+
+          (error) => {
+            console.log(error.text)
+            notifyError('Error! Fail to send message.')
+          }
+        )
+    } else {
+      console.log('Form is not available.')
+    }
+  }
   return (
     <section id='Contact'>
       <Fade direction='up' triggerOnce duration={1200}>
         <Container maxWidth={'lg'}>
           <Box minHeight={'calc(100vh - 80px)'} maxHeight={'max-content'}>
             <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <Typography variant='h3' fontWeight={700} my={3}>
+              <Typography variant='h3' fontWeight={700} mt={3} mb={2}>
                 Contact Me
               </Typography>
               <Typography variant='body1' mb={2} style={{ color: 'var(--gray-color)' }} textAlign={'center'}>
@@ -58,7 +89,7 @@ const Contact = () => {
                 If you have any questions or want to discuss a project, please do not hesitate to contact me.
               </Typography>
             </Box>
-            <Grid container spacing={2}>
+            <Grid container spacing={2} mb={5}>
               {contactInfo.map((item, index) => (
                 <Grid
                   item
@@ -78,7 +109,8 @@ const Contact = () => {
                       width: '100%',
                       height: '100%',
                       boxShadow: '0 0.2rem 1rem rgba(0, 0, 0, 0.15)',
-                      padding: 3,
+                      paddingX: 3,
+                      paddingY: 2,
                       borderRadius: '5px'
                     }}
                     component={Link}
@@ -88,8 +120,8 @@ const Contact = () => {
                     <Fab
                       size={'large'}
                       style={{
-                        minWidth: '75px',
-                        minHeight: '75px',
+                        minWidth: '60px',
+                        minHeight: '60px',
                         color: 'var(--white-color)',
                         backgroundColor: 'var(--primary-color)',
                         boxShadow: 'none',
@@ -97,7 +129,7 @@ const Contact = () => {
                       }}
                       disabled
                     >
-                      {React.createElement(item.icon, { fontSize: 'large' })}
+                      {React.createElement(item.icon, { fontSize: 'medium' })}
                     </Fab>
                     <Box
                       sx={{
@@ -107,11 +139,11 @@ const Contact = () => {
                         overflow: 'hidden'
                       }}
                     >
-                      <Typography variant='h5' textAlign={'center'} fontWeight={600}>
+                      <Typography variant='h6' textAlign={'center'} fontWeight={600}>
                         {item.title}
                       </Typography>
                       <Typography
-                        variant='body1'
+                        variant='body2'
                         style={{
                           color: 'var(--gray-color)',
                           whiteSpace: 'nowrap',
@@ -126,6 +158,110 @@ const Contact = () => {
                   </Box>
                 </Grid>
               ))}
+            </Grid>
+            <Grid container flexDirection={{ xs: 'column-reverse', md: 'row' }}>
+              <Grid item xs={12} md={6} display={'flex'} flexDirection={'column'} alignItems={'center'}>
+                <Box
+                  ref={form}
+                  component='form'
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'start',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: '#f8f9fa',
+                    padding: { xs: 3, sm: 6 },
+                    borderRadius: '5px'
+                  }}
+                  onSubmit={sendEmail}
+                >
+                  <TextField
+                    sx={{
+                      width: '100%',
+                      marginBottom: '1rem',
+                      '&:focus': {
+                        borderColor: 'black'
+                      }
+                    }}
+                    label='Your Name'
+                    name='from_name'
+                    required
+                  />
+
+                  <TextField
+                    sx={{
+                      width: '100%',
+                      marginBottom: '1rem'
+                    }}
+                    type='email'
+                    label='Your Email'
+                    name='from_email'
+                    required
+                  />
+
+                  <TextField
+                    sx={{
+                      width: '100%',
+                      marginBottom: '1rem'
+                    }}
+                    label='Subject'
+                    name='subject'
+                    required
+                  />
+
+                  <TextField
+                    sx={{
+                      width: '100%',
+                      marginBottom: '1rem'
+                    }}
+                    label='Message'
+                    multiline
+                    rows={5}
+                    name='message'
+                    required
+                  />
+                  <Box
+                    sx={{
+                      width: '100%',
+                      marginBottom: '1rem'
+                    }}
+                  >
+                    <Button
+                      type='submit'
+                      variant='contained'
+                      style={{ backgroundColor: 'var(--primary-color)', color: 'var(--white-color)' }}
+                      sx={{ height: '3rem', borderRadius: '50px', paddingX: '2rem' }}
+                    >
+                      Send Message
+                    </Button>
+                  </Box>
+                </Box>
+              </Grid>
+              <Grid item xs={12} md={6} display={'flex'} flexDirection={'column'} alignItems={'center'}>
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'start',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                    backgroundColor: '#f8f9fa',
+                    borderRadius: '5px'
+                  }}
+                >
+                  <iframe
+                    title='map'
+                    style={{ border: 0, width: '100%', height: '100%', minHeight: '450px' }}
+                    allowFullScreen={true}
+                    loading='lazy'
+                    referrerPolicy='no-referrer-when-downgrade'
+                    src='https://www.google.com/maps/embed/v1/place?q=FPT+University+HCMC,+Đường+D1,+Long+Thạnh+Mỹ,+Thành+Phố+Thủ+Đức,+Thành+phố+Hồ+Chí+Minh,+Việt+Nam&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8'
+                  ></iframe>
+                </Box>
+              </Grid>
             </Grid>
           </Box>
         </Container>
