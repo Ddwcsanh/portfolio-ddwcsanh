@@ -8,7 +8,6 @@ import Projects from './Projects'
 import Contact from './Contact'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { Fab } from '@mui/material'
-import { Fade } from 'react-awesome-reveal'
 
 const Main = () => {
   const [showScrollButton, setShowScrollButton] = useState(false)
