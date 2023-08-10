@@ -16,6 +16,7 @@ const Home = () => {
     <section id='Home'>
       <Box
         height={'100vh'}
+        minHeight={'600px'}
         width={'50%'}
         sx={{
           backgroundColor: 'var(--primary-color)',
@@ -27,7 +28,7 @@ const Home = () => {
         }}
       />
       <Container>
-        <Box height={'100vh'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
+        <Box height={'100vh'} minHeight={'600px'} display={'flex'} justifyContent={'center'} alignItems={'center'}>
           <Fade direction='down' triggerOnce duration={1200}>
             <Box display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'}>
               <Typography
@@ -62,7 +63,7 @@ const Home = () => {
           </Fade>
         </Box>
       </Container>
-      <Box position={'absolute'} bottom={'10vh'} width={'100%'} display={'flex'} justifyContent={'center'}>
+      <Box position={'absolute'} top={'max(450px, 80vh)'} width={'100%'} display={'flex'} justifyContent={'center'}>
         <Box
           height={'70px'}
           width={'70px'}

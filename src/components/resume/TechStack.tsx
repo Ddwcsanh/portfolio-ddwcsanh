@@ -148,9 +148,9 @@ const TechStack = () => {
                 {section.items.map((item) => (
                   <Grid
                     item
-                    xs={section.title === 'Front-end' || section.title === 'Back-end' ? 12 : 6}
-                    sm={section.title === 'Front-end' || section.title === 'Back-end' ? 12 : 12}
-                    md={section.title === 'Front-end' || section.title === 'Back-end' ? 12 : 6}
+                    xs={['Front-end', 'Back-end'].includes(section.title) ? 12 : 6}
+                    sm={['Front-end', 'Back-end'].includes(section.title) ? 12 : 12}
+                    md={['Front-end', 'Back-end'].includes(section.title) ? 12 : 6}
                     display={'flex'}
                     flexDirection={'column'}
                     alignItems={'center'}

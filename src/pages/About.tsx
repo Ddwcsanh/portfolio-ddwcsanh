@@ -5,10 +5,19 @@ const About = () => {
   return (
     <section style={{ paddingBottom: '5rem' }} id='About'>
       <Fade direction='up' triggerOnce duration={1200}>
-        <Container sx={{ maxWidth: { xs: '600px', md: '1200px' } }}>
-          <Grid container minHeight={'calc(100vh - 160px)'}>
+        <Container sx={{ maxWidth: { xs: 'sm', md: 'lg' } }}>
+          <Grid container height={'100%'}>
             <Grid item xs={0} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
-              <img src='/avatar.jpg' alt='Picture of me' height={'100%'} style={{ objectFit: 'cover' }} />
+              <img
+                src='/avatar.jpeg'
+                alt='Picture of me'
+                style={{
+                  objectFit: 'cover',
+                  height: 'calc(100vh - 160px)',
+                  maxHeight: '1000px',
+                  minHeight: '700px'
+                }}
+              />
             </Grid>
             <Grid item xs={12} md={6} sx={{ paddingTop: 6, paddingLeft: { md: 6 } }}>
               <Box pb={2}>
@@ -86,7 +95,7 @@ const About = () => {
                     </ListItemText>
                     <ListItemText sx={{ textAlign: 'left', minWidth: '230px', whiteSpace: 'nowrap' }}>
                       <Link underline='hover' href='tel:+84971625830'>
-                        (+84)971625830
+                        +84 971 625 830
                       </Link>
                     </ListItemText>
                   </ListItem>

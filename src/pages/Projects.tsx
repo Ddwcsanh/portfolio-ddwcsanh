@@ -27,7 +27,7 @@ const Projects = () => {
   return (
     <section style={{ paddingBottom: '5rem' }} id='Projects'>
       <Fade direction='up' triggerOnce duration={1200}>
-        <Container disableGutters maxWidth={false}>
+        <Container disableGutters maxWidth={'lg'}>
           <Box pb={2} display={'flex'} flexDirection={'column'} alignItems={'center'}>
             <Typography variant='h3' fontWeight={700} my={3}>
               My Projects
