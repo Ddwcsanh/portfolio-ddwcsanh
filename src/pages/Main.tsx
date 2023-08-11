@@ -7,7 +7,8 @@ import Resume from './Resume'
 import Projects from './Projects'
 import Contact from './Contact'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
-import { Fab } from '@mui/material'
+import { Fab, useMediaQuery } from '@mui/material'
+import ErrorPage from './ErrorPage'
 
 const Main = () => {
   const [showScrollButton, setShowScrollButton] = useState(false)
@@ -38,33 +39,41 @@ const Main = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
+  const below280px = useMediaQuery('(max-width:280px)')
+
   return (
     <>
-      <Navigation />
-      <Home />
-      <About />
-      <Resume />
-      <Projects />
-      <Contact />
-      <Footer />
+      {below280px ? (
+        <ErrorPage />
+      ) : (
+        <>
+          <Navigation />
+          <Home />
+          <About />
+          <Resume />
+          <Projects />
+          <Contact />
+          <Footer />
 
-      {showScrollButton && (
-        <Fab
-          aria-label='Scroll to Top'
-          sx={{
-            position: 'fixed',
-            height: '40px',
-            width: '40px',
-            bottom: '20px',
-            right: '20px',
-            zIndex: 999,
-            color: 'var(--primary-color)',
-            backgroundColor: 'var(--white-color)'
-          }}
-          onClick={scrollToTop}
-        >
-          <KeyboardArrowUpIcon />
-        </Fab>
+          {showScrollButton && (
+            <Fab
+              aria-label='Scroll to Top'
+              sx={{
+                position: 'fixed',
+                height: '40px',
+                width: '40px',
+                bottom: '20px',
+                right: '20px',
+                zIndex: 999,
+                color: 'var(--primary-color)',
+                backgroundColor: 'var(--white-color)'
+              }}
+              onClick={scrollToTop}
+            >
+              <KeyboardArrowUpIcon />
+            </Fab>
+          )}
+        </>
       )}
     </>
   )

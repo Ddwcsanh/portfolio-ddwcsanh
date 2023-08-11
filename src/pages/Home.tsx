@@ -6,6 +6,8 @@ import styled from 'styled-components'
 
 const Break = styled.span`
   display: inline;
+  text-align: center;
+  white-space: nowrap;
   @media (max-width: 600px) {
     display: block;
   }
@@ -46,7 +48,7 @@ const Home = () => {
                 </Box>
               </Typography>
               <Box display={'flex'}>
-                <Typography variant='h4' fontWeight={800}>
+                <Typography variant='h4' fontWeight={800} sx={{ whiteSpace: 'nowrap' }}>
                   I'm a&nbsp;
                 </Typography>
                 <Typography

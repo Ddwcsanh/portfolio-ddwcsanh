@@ -39,8 +39,9 @@ const ErrorPage = () => {
               Sorry!
             </Typography>
             <Typography variant='body1' textAlign={'center'}>
-              Because I'm lazy you know,
-              <br /> I'm still working on Mobile Device so please visit me on Desktop!
+              Your screen is too small.
+              <br />
+              Please use a larger screen.
             </Typography>
           </Box>
         </Paper>
