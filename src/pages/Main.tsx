@@ -13,6 +13,12 @@ const Main = () => {
   const [showScrollButton, setShowScrollButton] = useState(false)
 
   useEffect(() => {
+    window.onload = () => {
+      requestAnimationFrame(scrollToTop)
+    }
+  }, [])
+
+  useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 300) {
         setShowScrollButton(true)
