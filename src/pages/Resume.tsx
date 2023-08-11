@@ -132,7 +132,8 @@ const Resume = () => {
                         mb: '10px',
                         display: 'flex',
                         alignItems: 'center',
-                        position: 'relative'
+                        position: 'relative',
+                        overflow: 'hidden'
                       }}
                     >
                       <Box

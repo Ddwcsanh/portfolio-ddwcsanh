@@ -131,7 +131,13 @@ const Footer = () => {
                   mb={'10px'}
                 >
                   {React.createElement(item.icon, { sx: { color: 'var(--gray-color)', mr: 1 } })}
-                  <Typography variant='body1' color={'var(--gray-color)'}>
+                  <Typography
+                    variant='body1'
+                    color={'var(--gray-color)'}
+                    whiteSpace={'nowrap'}
+                    overflow={'hidden'}
+                    textOverflow={'ellipsis'}
+                  >
                     {item.content}
                   </Typography>
                 </Link>
