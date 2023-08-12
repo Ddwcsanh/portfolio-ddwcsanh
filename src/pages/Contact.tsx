@@ -46,9 +46,11 @@ const contactInfo = [
 
 const Contact = () => {
   const form = React.useRef()
+  const [isSubmitting, setIsSubmitting] = React.useState(false)
 
   const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
+    setIsSubmitting(true)
 
     if (form.current) {
       emailjs
@@ -61,13 +63,14 @@ const Contact = () => {
         .then(
           (result) => {
             console.log(result.text)
-            notifySuccess('Message sent successfully!')
             if (form.current) (form.current as HTMLFormElement).reset()
+            notifySuccess('Message sent successfully!')
+            setIsSubmitting(false)
           },
-
           (error) => {
             console.log(error.text)
             notifyError('Error! Fail to send message.')
+            setIsSubmitting(false)
           }
         )
     } else {
@@ -237,6 +240,7 @@ const Contact = () => {
                       variant='contained'
                       style={{ backgroundColor: 'var(--primary-color)', color: 'var(--white-color)' }}
                       sx={{ height: '3rem', borderRadius: '50px', paddingX: '2rem' }}
+                      disabled={isSubmitting}
                     >
                       Send Message
                     </Button>
