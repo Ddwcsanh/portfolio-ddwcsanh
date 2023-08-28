@@ -42,7 +42,7 @@ const ProjectList = ({ images }: SlideProps) => {
             <Typography variant='h5' fontWeight={700} mb={2} style={{ color: 'var(--white-color)' }}>
               {image.caption}
             </Typography>
-            <Typography variant='body1' mb={2} style={{ color: 'var(--white-color)' }}>
+            <Typography variant='body1' mb={2} mx={2} style={{ color: 'var(--white-color)', textAlign: 'center' }}>
               {image.description}
             </Typography>
             <Box>
