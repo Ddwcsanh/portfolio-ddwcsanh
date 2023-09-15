@@ -241,7 +241,10 @@ const ResponsiveAppBar = () => {
                   height: '100%',
                   textTransform: 'none',
                   fontSize: 'inherit',
-                  fontWeight: 'inherit'
+                  fontWeight: 'inherit',
+                  '&:hover': {
+                    backgroundColor: '#f8f9fa'
+                  }
                 }}
               >
                 <span className={`MuiTouchRipple-root ${page === activeComponent ? 'active' : ''}`}>{page}</span>

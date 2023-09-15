@@ -116,7 +116,11 @@ const Contact = () => {
                       boxShadow: '0 0.2rem 1rem rgba(0, 0, 0, 0.15)',
                       paddingX: 3,
                       paddingY: 2,
-                      borderRadius: '5px'
+                      borderRadius: '5px',
+                      '&:hover': {
+                        boxShadow: '0 0.2rem 1rem rgba(0, 0, 0, 0.3)',
+                        backgroundColor: '#f8f9fa'
+                      }
                     }}
                     component={Link}
                     href={item.href}

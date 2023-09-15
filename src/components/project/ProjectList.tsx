@@ -18,7 +18,10 @@ const ProjectList = ({ images }: SlideProps) => {
         <Box
           key={index}
           sx={{
-            position: 'relative'
+            position: 'relative',
+            '&:first-child': {
+              marginBottom: '1rem'
+            }
           }}
         >
           <Box
@@ -39,7 +42,12 @@ const ProjectList = ({ images }: SlideProps) => {
               alignItems: 'center'
             }}
           >
-            <Typography variant='h5' fontWeight={700} mb={2} style={{ color: 'var(--white-color)' }}>
+            <Typography
+              variant='h5'
+              fontWeight={700}
+              mb={2}
+              style={{ color: 'var(--white-color)', textAlign: 'center' }}
+            >
               {image.caption}
             </Typography>
             <Typography variant='body1' mb={2} mx={2} style={{ color: 'var(--white-color)', textAlign: 'center' }}>
