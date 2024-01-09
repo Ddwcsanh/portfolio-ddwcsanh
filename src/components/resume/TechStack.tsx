@@ -8,7 +8,9 @@ import {
   SiJavascript,
   SiTypescript,
   SiAdobephotoshop,
-  SiAdobepremierepro
+  SiAdobepremierepro,
+  SiNextdotjs,
+  SiTailwindcss
 } from 'react-icons/si'
 import { TbSql } from 'react-icons/tb'
 
@@ -65,6 +67,16 @@ const myTechStack = [
         name: 'Bootstrap',
         icon: FaBootstrap,
         color: '#7952B3'
+      },
+      {
+        name: 'NextJS',
+        icon: SiNextdotjs,
+        color: '#000000'
+      },
+      {
+        name: 'Tailwind CSS',
+        icon: SiTailwindcss,
+        color: '#06B6D4'
       }
     ]
   },
@@ -148,9 +160,9 @@ const TechStack = () => {
                 {section.items.map((item) => (
                   <Grid
                     item
-                    xs={['Front-end', 'Back-end'].includes(section.title) ? 12 : 6}
-                    sm={['Front-end', 'Back-end'].includes(section.title) ? 12 : 12}
-                    md={['Front-end', 'Back-end'].includes(section.title) ? 12 : 6}
+                    xs={['Back-end'].includes(section.title) ? 12 : 6}
+                    sm={['Back-end'].includes(section.title) ? 12 : 12}
+                    md={['Back-end'].includes(section.title) ? 12 : 6}
                     display={'flex'}
                     flexDirection={'column'}
                     alignItems={'center'}

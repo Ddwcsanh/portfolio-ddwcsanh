@@ -1,7 +1,5 @@
 import { ArrowRightAlt, Email, Facebook, GitHub, Instagram, LinkedIn, Phone } from '@mui/icons-material'
-import { Container, Grid, Link, ListItem } from '@mui/material'
-import Box from '@mui/material/Box'
-import Typography from '@mui/material/Typography'
+import { Container, Grid, Link, ListItem, Box, Typography } from '@mui/material'
 import React from 'react'
 
 const pages = ['Home', 'About', 'Resume', 'Projects', 'Contact']

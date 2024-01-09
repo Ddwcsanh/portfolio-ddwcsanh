@@ -9,7 +9,7 @@ const About = () => {
           <Grid container height={'100%'}>
             <Grid item xs={0} md={6} sx={{ display: { xs: 'none', md: 'block' } }}>
               <img
-                src='/avatar.jpeg'
+                src='/avatar.jpg'
                 alt='Picture of me'
                 style={{
                   objectFit: 'cover',

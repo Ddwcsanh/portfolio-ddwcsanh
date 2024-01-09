@@ -9,8 +9,9 @@ interface SlideProps {
     url: string
     caption: string
     description: string
-    link: string
-    source: string
+    link?: string
+    source?: string
+    note?: string
   }[]
 }
 
@@ -64,32 +65,44 @@ const Slide = ({ images }: SlideProps) => {
                 {image.description}
               </Typography>
               <Box>
-                <Button
-                  variant='contained'
-                  endIcon={<Code />}
-                  sx={{
-                    backgroundColor: 'var(--white-color)',
-                    color: 'var(--primary-color)',
-                    '&:hover': { backgroundColor: 'rgb(220, 220, 220)' },
-                    marginX: '5px'
-                  }}
-                  onClick={() => window.open(image.source, '_blank')}
-                >
-                  Source
-                </Button>
-                <Button
-                  variant='contained'
-                  endIcon={<Launch />}
-                  sx={{
-                    backgroundColor: 'var(--white-color)',
-                    color: 'var(--primary-color)',
-                    '&:hover': { backgroundColor: 'rgb(220, 220, 220)' },
-                    marginX: '5px'
-                  }}
-                  onClick={() => window.open(image.link, '_blank')}
-                >
-                  Link
-                </Button>
+                {image.source && (
+                  <Button
+                    variant='contained'
+                    endIcon={<Code />}
+                    sx={{
+                      backgroundColor: 'var(--white-color)',
+                      color: 'var(--primary-color)',
+                      '&:hover': { backgroundColor: 'rgb(220, 220, 220)' },
+                      marginX: '5px'
+                    }}
+                    onClick={() => window.open(image.source, '_blank')}
+                  >
+                    Source
+                  </Button>
+                )}
+                {image.link && (
+                  <Button
+                    variant='contained'
+                    endIcon={<Launch />}
+                    sx={{
+                      backgroundColor: 'var(--white-color)',
+                      color: 'var(--primary-color)',
+                      '&:hover': { backgroundColor: 'rgb(220, 220, 220)' },
+                      marginX: '5px'
+                    }}
+                    onClick={() => window.open(image.link, '_blank')}
+                  >
+                    Link
+                  </Button>
+                )}
+                {image.note && (
+                  <Typography
+                    variant='body2'
+                    style={{ color: 'var(--white-color)', textAlign: 'center', fontWeight: 'bold' }}
+                  >
+                    {image.note}
+                  </Typography>
+                )}
               </Box>
             </Box>
             <img
@@ -98,8 +111,8 @@ const Slide = ({ images }: SlideProps) => {
               style={{
                 maxHeight: 'calc(100vh - 294.02px)',
                 minHeight: '550px',
-                height: '100%',
                 width: '100%',
+                aspectRatio: '3/2',
                 objectFit: 'fill',
                 objectPosition: 'center'
               }}

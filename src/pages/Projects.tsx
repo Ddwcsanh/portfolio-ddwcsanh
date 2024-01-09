@@ -18,6 +18,12 @@ const images = [
     description: 'A web application for managing documents in a company using ReactJS and Firebase',
     link: 'https://www.fptuhcm-capstone.tech/',
     source: 'https://github.com/hideonbush106/DocManagementSystem'
+  },
+  {
+    url: 'KetFilmStore_project.png',
+    caption: 'Ket Film Store',
+    description: 'A web application for selling films using NextJS',
+    note: 'This project is still in progress'
   }
 ]
 
