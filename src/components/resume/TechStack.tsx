@@ -1,6 +1,6 @@
 import { Box, Divider, Grid, Typography } from '@mui/material'
 import React from 'react'
-import { FaHtml5, FaCss3, FaBootstrap, FaReact, FaNpm, FaGitAlt, FaJava } from 'react-icons/fa'
+import { FaHtml5, FaCss3, FaBootstrap, FaReact, FaNpm, FaGitAlt, FaJava, FaNodeJs } from 'react-icons/fa'
 import {
   SiReactrouter,
   SiMicrosoftsqlserver,
@@ -10,7 +10,9 @@ import {
   SiAdobephotoshop,
   SiAdobepremierepro,
   SiNextdotjs,
-  SiTailwindcss
+  SiTailwindcss,
+  SiExpress,
+  SiMongodb
 } from 'react-icons/si'
 import { TbSql } from 'react-icons/tb'
 
@@ -92,6 +94,21 @@ const myTechStack = [
         name: 'Java Servlet',
         icon: FaJava,
         color: '#ef1f26'
+      },
+      {
+        name: 'NodeJS',
+        icon: FaNodeJs,
+        color: '#339933'
+      },
+      {
+        name: 'ExpressJS',
+        icon: SiExpress,
+        color: '#000000'
+      },
+      {
+        name: 'MongoDB',
+        icon: SiMongodb,
+        color: '#47A248'
       }
     ]
   },
@@ -160,9 +177,9 @@ const TechStack = () => {
                 {section.items.map((item) => (
                   <Grid
                     item
-                    xs={['Back-end'].includes(section.title) ? 12 : 6}
-                    sm={['Back-end'].includes(section.title) ? 12 : 12}
-                    md={['Back-end'].includes(section.title) ? 12 : 6}
+                    xs={6}
+                    sm={12}
+                    md={6}
                     display={'flex'}
                     flexDirection={'column'}
                     alignItems={'center'}

@@ -1,8 +1,6 @@
 import { Box, Button, Typography } from '@mui/material'
-import 'react-slideshow-image/dist/styles.css'
 import { Code, Launch } from '@mui/icons-material'
-
-import { Slide as ReactSlide } from 'react-slideshow-image'
+import Carousel from 'react-material-ui-carousel'
 
 interface SlideProps {
   images: {
@@ -17,21 +15,17 @@ interface SlideProps {
 
 const Slide = ({ images }: SlideProps) => {
   const properties = {
-    duration: 4000,
-    autoplay: true,
-    transitionDuration: 500,
-    arrows: true,
-    infinite: true,
-    easing: 'ease',
-    indicators: true,
-    hoverPause: true,
-    nextArrow: <div style={{ fontSize: '3rem', width: '1rem' }}>›</div>,
-    prevArrow: <div style={{ fontSize: '3rem', width: '1rem' }}>‹</div>
+    interval: 5000,
+    autoPlay: true,
+    duration: 500,
+    stopAutoPlayOnHover: true,
+    navButtonsAlwaysVisible: true,
+    swipe: true
   }
 
   return (
     <Box pb={3}>
-      <ReactSlide {...properties}>
+      <Carousel {...properties} animation='slide'>
         {images.map((image, index) => (
           <Box
             key={index}
@@ -110,16 +104,15 @@ const Slide = ({ images }: SlideProps) => {
               alt={image.caption}
               style={{
                 maxHeight: 'calc(100vh - 294.02px)',
-                minHeight: '550px',
+                minHeight: '700px',
                 width: '100%',
-                aspectRatio: '3/2',
-                objectFit: 'fill',
+                objectFit: 'contain',
                 objectPosition: 'center'
               }}
             />
           </Box>
         ))}
-      </ReactSlide>
+      </Carousel>
     </Box>
   )
 }
