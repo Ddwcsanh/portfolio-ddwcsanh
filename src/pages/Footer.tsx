@@ -150,7 +150,7 @@ const Footer = () => {
           }}
         >
           <Typography variant='body1' mb={3} color={'var(--gray-color)'} textAlign={'center'}>
-            Copyright © {new Date().getFullYear()} <span style={{ whiteSpace: 'nowrap' }}>Le Do Duc Anh ❤️ ND</span> |
+            Copyright © {new Date().getFullYear()} <span style={{ whiteSpace: 'nowrap' }}>Le Do Duc Anh</span> |
             <span style={{ whiteSpace: 'nowrap' }}> All rights reserved</span>
           </Typography>
           <Typography variant='body1' color={'var(--gray-color)'} textAlign={'center'}>
