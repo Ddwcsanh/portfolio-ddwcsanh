@@ -20,6 +20,13 @@ const images = [
     source: 'https://github.com/hideonbush106/DocManagementSystem'
   },
   {
+    url: '/Furnique_project.png',
+    caption: 'Furnique',
+    description: 'A web application for selling furniture using NextJS, AR, and AI.',
+    link: 'https://www.furnique.tech/',
+    source: 'https://github.com/Deco-Team/furnique-web'
+  },
+  {
     url: 'KetFilmStore_project.png',
     caption: 'Ket Film Store',
     description: 'A web application for selling films using NextJS',

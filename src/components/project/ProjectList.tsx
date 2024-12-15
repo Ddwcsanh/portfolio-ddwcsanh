@@ -97,7 +97,9 @@ const ProjectList = ({ images }: SlideProps) => {
             alt={image.caption}
             style={{
               width: '100%',
-              aspectRatio: '3/2'
+              aspectRatio: '3/2',
+              objectFit: 'cover',
+              objectPosition: 'top'
             }}
           />
         </Box>

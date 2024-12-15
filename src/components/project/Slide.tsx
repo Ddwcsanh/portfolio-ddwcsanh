@@ -106,8 +106,8 @@ const Slide = ({ images }: SlideProps) => {
                 maxHeight: 'calc(100vh - 294.02px)',
                 minHeight: '700px',
                 width: '100%',
-                objectFit: 'contain',
-                objectPosition: 'center'
+                objectFit: 'cover',
+                objectPosition: 'top'
               }}
             />
           </Box>

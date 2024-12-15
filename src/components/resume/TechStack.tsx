@@ -79,6 +79,11 @@ const myTechStack = [
         name: 'Tailwind CSS',
         icon: SiTailwindcss,
         color: '#06B6D4'
+      },
+      {
+        name: 'React Native',
+        icon: FaReact,
+        color: '#61DAFB'
       }
     ]
   },
@@ -185,7 +190,7 @@ const TechStack = () => {
                     alignItems={'center'}
                     key={item.name}
                   >
-                    {item.name === 'Figma' ? (
+                    {typeof item.icon === 'string' ? (
                       <img src={item.icon} alt={item.name} height={80} width={80} />
                     ) : (
                       React.createElement(item.icon, { size: '5rem', color: item.color })
